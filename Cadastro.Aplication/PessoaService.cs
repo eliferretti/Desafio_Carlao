@@ -133,5 +133,22 @@ namespace Cadastro.Aplication
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<PessoaDto> GetPessoaById(int id)
+        {
+            try
+            {
+                var pessoa = await _pessoaPersist.GetPessoaByIdAsync(id);
+                if (pessoa == null) return null;
+
+                var resultado = _mapper.Map<PessoaDto>(pessoa);
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
