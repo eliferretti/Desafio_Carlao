@@ -96,5 +96,24 @@ namespace Cadastro.API.Controllers
                     $"Erro ao tentar editar pessoa. Erro:{ex.Message}");
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var evento = await _pessoaService.GetPessoaById(id);
+                if (evento == null) return NoContent();
+
+                return await _pessoaService.DeletePessoa(id)
+                    ? Ok(new { message = "Deletado" })
+                    : throw new Exception("Ocorreu um problema ao tentar deletar!");
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Erro ao tentar deletar evento. Erro:{ex.Message}");
+            }
+        }
     }
 }

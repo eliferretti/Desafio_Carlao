@@ -10,6 +10,7 @@ namespace Cadastro.Aplication.Contratos
         Task<bool> DeletePessoa(int id);
         Task<PessoaDto[]> FetchAllPessoasAsync();
         Task<PessoaDto> GetPessoaByCpf(string cpf);
+        Task<PessoaDto> GetPessoaById(int cpf);
         Task<PessoaDto[]> FetchPessoasByNomeLike(string nomeLike);
     }
 }
