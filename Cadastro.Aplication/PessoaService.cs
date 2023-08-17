@@ -43,14 +43,12 @@ namespace Cadastro.Aplication
             }
         }
 
-        public async Task<PessoaDto> UpdatePessoa(int id, PessoaDto model)
+        public async Task<PessoaDto> UpdatePessoa(PessoaDto model)
         {
             try
             {
-                var pessoa = await _pessoaPersist.GetPessoaByIdAsync(id);
+                var pessoa = await _pessoaPersist.GetPessoaByIdAsync(model.Id);
                 if (pessoa == null) return null;
-
-                model.Id = pessoa.Id;
 
                 _mapper.Map(model, pessoa);
 

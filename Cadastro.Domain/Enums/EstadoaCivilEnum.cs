@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Cadastro.Domain.Enums
+﻿namespace Cadastro.Domain.Enums
 {
     public enum EstadoCivilEnum
     {
+        NaoInformado = 0,
         Solteiro = 1,
         Casado = 2,
         Divorciado = 3,
