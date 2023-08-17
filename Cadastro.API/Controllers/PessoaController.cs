@@ -82,11 +82,12 @@ namespace Cadastro.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, PessoaDto model)
+        public async Task<IActionResult> Put(PessoaDto model)
         {
             try
             {
-                var pessoa = await _pessoaService.UpdatePessoa(id, model);
+                model.DataCadastro = DateTime.Now;
+                var pessoa = await _pessoaService.UpdatePessoa(model);
                 if (pessoa == null) return NoContent();
                 return Ok(pessoa);
             }
