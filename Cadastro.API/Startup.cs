@@ -33,7 +33,7 @@ namespace Cadastro.API
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling =
                 Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IPessoaService, PessoaService>();
@@ -70,11 +70,6 @@ namespace Cadastro.API
             app.UseCors(x => x.AllowAnyHeader()
                                .AllowAnyMethod()
                                .AllowAnyOrigin());
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
 
             app.UseEndpoints(endpoints =>
             {
