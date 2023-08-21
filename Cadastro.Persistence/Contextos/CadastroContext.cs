@@ -1,10 +1,5 @@
 ﻿using Cadastro.Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cadastro.Persistence.Contextos
 {
@@ -18,12 +13,11 @@ namespace Cadastro.Persistence.Contextos
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Telefone> Telefones { get; set; }
 
-
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
-        //    optionsBuilder.UseSqlServer("Server=DESKTOP-M0O6KC2;Database=DB_CADASTRO;Integrated Security=True");
+        //    optionsBuilder.UseSqlite("Data Source=CADASTRO.db");
+        //    //optionsBuilder.UseSqlServer("Server=DESKTOP-M0O6KC2;Database=DB_CADASTRO;Integrated Security=True");
         //}
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,7 +33,7 @@ namespace Cadastro.Persistence.Contextos
                .HasForeignKey(e => e.IdPessoa)
                .OnDelete(DeleteBehavior.Cascade);
 
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

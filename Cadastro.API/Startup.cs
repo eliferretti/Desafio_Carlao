@@ -27,7 +27,7 @@ namespace Cadastro.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CadastroContext>(
-              context => context.UseSqlServer(Configuration.GetConnectionString("Default"))
+              context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
 
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling =
